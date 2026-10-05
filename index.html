@@ -8,281 +8,42 @@
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Fredoka', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background: linear-gradient(135deg, #51e1ec 0%, #4ce4b1 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            overflow-x: hidden;
-        }
-
-        .lang-selector {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            z-index: 100;
-        }
-        .lang-selector select {
-            padding: 6px 12px;
-            border-radius: 20px;
-            border: 2px solid white;
-            background: rgba(255, 255, 255, 0.9);
-            font-weight: 600;
-            color: #333;
-            outline: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .container {
-            background: white;
-            border-radius: 28px;
-            width: 100%;
-            max-width: 440px;
-            padding: 30px 24px;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-            border: 4px solid #e0f9f1;
-            text-align: center;
-            position: relative;
-        }
-
-        .step {
-            display: none;
-            animation: fadeIn 0.4s ease-in-out forwards;
-        }
-        .step.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h2 {
-            font-size: 26px;
-            color: #222;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 0px #fff;
-            font-weight: 700;
-        }
-
-        .label {
-            font-size: 18px;
-            color: #444;
-            font-weight: 600;
-            text-align: left;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 14px 18px;
-            border-radius: 16px;
-            border: 3px solid #e0e0e0;
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 22px;
-            outline: none;
-            transition: border-color 0.2s;
-            background: #fafafa;
-        }
-        input[type="text"]:focus {
-            border-color: #4ce4b1;
-            background: white;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 16px;
-            border-radius: 20px;
-            font-size: 26px;
-            font-weight: 700;
-            color: white;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: transform 0.1s, filter 0.2s;
-            display: inline-block;
-            text-decoration: none;
-        }
-        .btn:active {
-            transform: scale(0.98);
-        }
-
-        .btn-green {
-            background: #4de53b;
-            border-bottom: 6px solid #36b127;
-            text-shadow: 2px 2px 0px #319e24;
-        }
-        .btn-green:hover {
-            filter: brightness(1.05);
-        }
-
-        .btn-red {
-            background: #ff4747;
-            border-bottom: 6px solid #cc2d2d;
-            text-shadow: 2px 2px 0px #ba2323;
-        }
-        .btn-red:hover {
-            filter: brightness(1.05);
-        }
-
-        .profile-card {
-            background: #f7f7f7;
-            border-radius: 18px;
-            border: 2px solid #eaeaea;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            margin-bottom: 24px;
-            text-align: left;
-            position: relative;
-        }
-        .avatar-box {
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            background: #e0e0e0;
-            border: 3px solid white;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            overflow: hidden;
-            margin-right: 18px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .avatar-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .profile-info h4 {
-            font-size: 20px;
-            color: #222;
-            font-weight: 700;
-            word-break: break-all;
-        }
-        .profile-info p {
-            font-size: 15px;
-            color: #777;
-            font-weight: 400;
-        }
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .quest-subtitle {
-            font-size: 16px;
-            color: #555;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        .quest-subtitle span {
-            color: #ff2a5f; 
-            font-weight: 700;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Fredoka', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background: linear-gradient(135deg, #51e1ec 0%, #4ce4b1 100%); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; overflow-x: hidden; }
+        .lang-selector { position: absolute; top: 15px; right: 15px; z-index: 100; }
+        .lang-selector select { padding: 6px 12px; border-radius: 20px; border: 2px solid white; background: rgba(255, 255, 255, 0.9); font-weight: 600; color: #333; outline: none; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .container { background: white; border-radius: 28px; width: 100%; max-width: 440px; padding: 30px 24px; box-shadow: 0 12px 24px rgba(0,0,0,0.12); border: 4px solid #e0f9f1; text-align: center; position: relative; }
+        .step { display: none; animation: fadeIn 0.4s ease-in-out forwards; }
+        .step.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        h2 { font-size: 26px; color: #222; margin-bottom: 20px; text-shadow: 1px 1px 0px #fff; font-weight: 700; }
+        .label { font-size: 18px; color: #444; font-weight: 600; text-align: left; margin-bottom: 8px; display: block; }
+        input[type="text"] { width: 100%; padding: 14px 18px; border-radius: 16px; border: 3px solid #e0e0e0; font-size: 18px; font-weight: 600; color: #333; margin-bottom: 22px; outline: none; transition: border-color 0.2s; background: #fafafa; }
+        input[type="text"]:focus { border-color: #4ce4b1; background: white; }
+        .btn { width: 100%; padding: 16px; border-radius: 20px; font-size: 26px; font-weight: 700; color: white; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; transition: transform 0.1s, filter 0.2s; display: inline-block; text-decoration: none; }
+        .btn:active { transform: scale(0.98); }
+        .btn-green { background: #4de53b; border-bottom: 6px solid #36b127; text-shadow: 2px 2px 0px #319e24; }
+        .btn-green:hover { filter: brightness(1.05); }
+        .btn-red { background: #ff4747; border-bottom: 6px solid #cc2d2d; text-shadow: 2px 2px 0px #ba2323; }
+        .btn-red:hover { filter: brightness(1.05); }
+        .profile-card { background: #f7f7f7; border-radius: 18px; border: 2px solid #eaeaea; padding: 20px; display: flex; align-items: center; justify-content: flex-start; margin-bottom: 24px; text-align: left; position: relative; }
+        .avatar-box { width: 75px; height: 75px; border-radius: 50%; background: #e0e0e0; border: 3px solid white; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden; margin-right: 18px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        .avatar-box img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-info h4 { font-size: 20px; color: #222; font-weight: 700; word-break: break-all; }
+        .profile-info p { font-size: 15px; color: #777; font-weight: 400; }
+        .btn-group { display: flex; flex-direction: column; gap: 12px; }
+        .quest-subtitle { font-size: 16px; color: #555; margin-bottom: 20px; font-weight: 600; }
+        .quest-subtitle span { color: #ff2a5f; font-weight: 700; }
+        .offer-list { margin-bottom: 24px; display: flex; flex-direction: column; gap: 12px; }
         
-        .offer-list {
-            margin-bottom: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+        .offer-item { width: 100%; background: linear-gradient(180deg, #74ea48 0%, #46c71c 100%); border: 2px solid #2a8109; border-bottom: 8px solid #2a8109; border-radius: 16px; padding: 16px 12px; cursor: pointer; position: relative; transition: all 0.1s ease; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .offer-item:active { transform: translateY(4px); border-bottom: 4px solid #2a8109; margin-bottom: 4px; }
+        .offer-item span { color: white; font-size: 21px; font-weight: 700; text-align: center; line-height: 1.2; text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0px 3px 0 #000; }
+        .offer-status { font-size: 13px !important; margin-top: 4px; text-align: right; width: 100%; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important; }
         
-        .offer-item {
-            width: 100%;
-            background: linear-gradient(180deg, #74ea48 0%, #46c71c 100%);
-            border: 2px solid #2a8109;
-            border-bottom: 8px solid #2a8109;
-            border-radius: 16px;
-            padding: 16px 12px;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.1s ease;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .offer-item:active {
-            transform: translateY(4px);
-            border-bottom: 4px solid #2a8109;
-            margin-bottom: 4px;
-        }
-
-        .offer-item span {
-            color: white;
-            font-size: 21px;
-            font-weight: 700;
-            text-align: center;
-            line-height: 1.2;
-            text-shadow: 
-                -2px -2px 0 #000,
-                 2px -2px 0 #000,
-                -2px  2px 0 #000,
-                 2px  2px 0 #000,
-                 0px  3px 0 #000;
-        }
-
-        .offer-status {
-            font-size: 13px !important;
-            margin-top: 4px;
-            text-align: right;
-            width: 100%;
-            text-shadow: 
-                -1px -1px 0 #000,
-                 1px -1px 0 #000,
-                -1px  1px 0 #000,
-                 1px  1px 0 #000 !important;
-        }
-
-        .lock-box {
-            background: #2b303a;
-            border-radius: 14px;
-            padding: 14px;
-            color: #a0a5b5;
-            font-weight: 600;
-            font-size: 14px;
-            border: 2px dashed #444a56;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-        }
-        .lock-code {
-            color: #f1c40f;
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .loading {
-            pointer-events: none;
-            opacity: 0.6;
-        }
+        .lock-box { background: #2b303a; border-radius: 14px; padding: 14px; color: #a0a5b5; font-weight: 600; font-size: 14px; border: 2px dashed #444a56; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .lock-code { color: #f1c40f; font-size: 16px; font-weight: 700; letter-spacing: 1.5px; display: flex; align-items: center; gap: 6px; }
+        .loading { pointer-events: none; opacity: 0.6; }
     </style>
 </head>
 <body>
@@ -300,17 +61,14 @@
             <h2 id="t-step1-title">Claim Your Reward</h2>
             <label class="label" id="t-label-code">Enter your code</label>
             <input type="text" id="promoCode" value="BG498" readonly>
-            
             <label class="label" id="t-label-user">Roblox username</label>
             <input type="text" id="usernameInput" placeholder="Your username...">
-            
             <button class="btn btn-green" id="btn-claim" onclick="processStep1()">Claim</button>
         </div>
 
         <div id="step2" class="step">
             <h2 id="t-step2-title">Confirm Username</h2>
             <p class="quest-subtitle" id="t-is-this-you" style="margin-top:-10px; margin-bottom:15px;">Is this you?</p>
-            
             <div class="profile-card">
                 <div class="avatar-box">
                     <img id="userAvatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23ccc'/></svg>" alt="Avatar">
@@ -320,7 +78,6 @@
                     <p id="atUsername">@player</p>
                 </div>
             </div>
-
             <div class="btn-group">
                 <button class="btn btn-green" id="btn-yes" onclick="goToStep3()">Yes, it's me!</button>
                 <button class="btn btn-red" id="btn-no" onclick="goBackToStep1()">No, try again</button>
@@ -332,26 +89,29 @@
             <p class="quest-subtitle" id="t-quest-desc">Complete <span>2 quests</span> to unlock your 1,000 Robux Giftcard</p>
             
             <div class="offer-list" id="offerContainer">
-                <!-- CPA Linkleriniz buraya href olarak eklendi -->
-                <a href="https://appsave.online/cl/i/1x3g7k" target="_blank" class="offer-item" onclick="markClicked(this)">
+                
+                <!-- DİKKAT: Yeni aldığınız "Smartlink" URL'sini buradaki href="LINK_BURAYA" kısmına yapıştırın. -->
+                <a href="LINK_BURAYA" target="_blank" class="offer-item" onclick="markClicked(this)">
                     <span id="t-offer1">Download and open the app!</span>
                 </a>
-                <a href="https://appsave.online/cl/i/1x3g7k" target="_blank" class="offer-item" onclick="markClicked(this)">
+                
+                <a href="LINK_BURAYA" target="_blank" class="offer-item" onclick="markClicked(this)">
                     <span id="t-offer2">Complete a quick survey!</span>
                     <span class="offer-status" id="t-offer-status">Waiting for completion.</span>
                 </a>
-                <a href="https://appsave.online/cl/i/1x3g7k" target="_blank" class="offer-item" onclick="markClicked(this)">
+                
+                <a href="LINK_BURAYA" target="_blank" class="offer-item" onclick="markClicked(this)">
                     <span id="t-offer3">Check how lucky you are today!</span>
                 </a>
-                <a href="https://appsave.online/cl/i/1x3g7k" target="_blank" class="offer-item" onclick="markClicked(this)">
+                
+                <a href="LINK_BURAYA" target="_blank" class="offer-item" onclick="markClicked(this)">
                     <span id="t-offer4">Play a game to get special offer!</span>
                 </a>
+                
             </div>
 
             <div class="lock-box">
-                <div class="lock-code">
-                    🔒 RB??-????-????-????
-                </div>
+                <div class="lock-code">🔒 RB??-????-????-????</div>
                 <span id="t-lock-status">your code unlocks after completion...</span>
             </div>
         </div>
@@ -381,10 +141,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             const userLang = navigator.language || navigator.userLanguage;
             const shortLang = userLang.substring(0, 2).toLowerCase();
-            if (translations[shortLang]) {
-                currentLang = shortLang;
-                document.getElementById('langSelect').value = shortLang;
-            }
+            if (translations[shortLang]) { currentLang = shortLang; document.getElementById('langSelect').value = shortLang; }
             updateDOMTexts();
         });
 
@@ -395,29 +152,18 @@
 
         function updateDOMTexts() {
             const t = translations[currentLang];
-            document.getElementById('t-step1-title').innerText = t.s1Title;
-            document.getElementById('t-label-code').innerText = t.s1Code;
-            document.getElementById('t-label-user').innerText = t.s1User;
-            document.getElementById('btn-claim').innerText = t.s1Btn;
-            document.getElementById('usernameInput').placeholder = t.s1Place;
-            document.getElementById('t-step2-title').innerText = t.s2Title;
-            document.getElementById('t-is-this-you').innerText = t.s2You;
-            document.getElementById('btn-yes').innerText = t.s2Yes;
-            document.getElementById('btn-no').innerText = t.s2No;
-            document.getElementById('t-step3-title').innerText = t.s3Title;
-            document.getElementById('t-quest-desc').innerHTML = t.s3Desc;
-            document.getElementById('t-lock-status').innerText = t.s3Lock;
+            document.getElementById('t-step1-title').innerText = t.s1Title; document.getElementById('t-label-code').innerText = t.s1Code;
+            document.getElementById('t-label-user').innerText = t.s1User; document.getElementById('btn-claim').innerText = t.s1Btn;
+            document.getElementById('usernameInput').placeholder = t.s1Place; document.getElementById('t-step2-title').innerText = t.s2Title;
+            document.getElementById('t-is-this-you').innerText = t.s2You; document.getElementById('btn-yes').innerText = t.s2Yes;
+            document.getElementById('btn-no').innerText = t.s2No; document.getElementById('t-step3-title').innerText = t.s3Title;
+            document.getElementById('t-quest-desc').innerHTML = t.s3Desc; document.getElementById('t-lock-status').innerText = t.s3Lock;
             
-            // Dinamik Görev Başlıkları
-            document.getElementById('t-offer1').innerHTML = t.offer1;
-            document.getElementById('t-offer2').innerHTML = t.offer2;
-            document.getElementById('t-offer3').innerHTML = t.offer3;
-            document.getElementById('t-offer4').innerHTML = t.offer4;
+            document.getElementById('t-offer1').innerHTML = t.offer1; document.getElementById('t-offer2').innerHTML = t.offer2;
+            document.getElementById('t-offer3').innerHTML = t.offer3; document.getElementById('t-offer4').innerHTML = t.offer4;
             
             const statusEl = document.getElementById('t-offer-status');
-            if(statusEl && !statusEl.dataset.clicked) {
-                statusEl.innerText = t.offerStatus;
-            }
+            if(statusEl && !statusEl.dataset.clicked) { statusEl.innerText = t.offerStatus; }
         }
 
         function processStep1() {
@@ -435,43 +181,28 @@
                     document.getElementById('displayUsername').innerText = targetUser.displayName;
                     document.getElementById('atUsername').innerText = '@' + targetUser.name;
                     return fetch(`https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${targetUser.id}&size=150x150&format=Png&isCircular=true`);
-                } else {
-                    throw new Error("Not found");
-                }
+                } else { throw new Error("Not found"); }
             })
             .then(res => res.json())
             .then(imgData => {
-                if (imgData && imgData.data && imgData.data.length > 0) {
-                    document.getElementById('userAvatar').src = imgData.data[0].imageUrl;
-                }
+                if (imgData && imgData.data && imgData.data.length > 0) { document.getElementById('userAvatar').src = imgData.data[0].imageUrl; }
                 showStep(2);
             })
             .catch(() => {
-                document.getElementById('displayUsername').innerText = username;
-                document.getElementById('atUsername').innerText = '@' + username.toLowerCase();
+                document.getElementById('displayUsername').innerText = username; document.getElementById('atUsername').innerText = '@' + username.toLowerCase();
                 document.getElementById('userAvatar').src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23ccc'/></svg>";
                 showStep(2);
             })
-            .finally(() => {
-                claimBtn.classList.remove('loading');
-                claimBtn.innerText = translations[currentLang].s1Btn;
-            });
+            .finally(() => { claimBtn.classList.remove('loading'); claimBtn.innerText = translations[currentLang].s1Btn; });
         }
 
-        function goBackToStep1() {
-            showStep(1);
-        }
-
-        function goToStep3() {
-            showStep(3);
-        }
-
+        function goBackToStep1() { showStep(1); }
+        function goToStep3() { showStep(3); }
         function showStep(stepNumber) {
             document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
             document.getElementById('step' + stepNumber).classList.add('active');
         }
 
-        // Kullanıcı butona tıkladığında geri bildirim vermek için küçük bir fonksiyon
         function markClicked(btn) {
             let statusSpan = btn.querySelector('.offer-status');
             if(!statusSpan) {
