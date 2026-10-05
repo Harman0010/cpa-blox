@@ -196,11 +196,10 @@
             font-weight: 600;
         }
         .quest-subtitle span {
-            color: #ff2a5f; /* 2. görseldeki kırmızı renk */
+            color: #ff2a5f; 
             font-weight: 700;
         }
         
-        /* YENİ EKLENEN GÖREV BUTONU TASARIMLARI */
         .offer-list {
             margin-bottom: 24px;
             display: flex;
@@ -237,7 +236,6 @@
             font-weight: 700;
             text-align: center;
             line-height: 1.2;
-            /* Yazıların etrafındaki siyah çerçeve efekti */
             text-shadow: 
                 -2px -2px 0 #000,
                  2px -2px 0 #000,
@@ -334,19 +332,19 @@
             <p class="quest-subtitle" id="t-quest-desc">Complete <span>2 quests</span> to unlock your 1,000 Robux Giftcard</p>
             
             <div class="offer-list" id="offerContainer">
-                <!-- YENİ GÖREV BUTONLARI BURAYA EKLENDİ -->
-                <a href="#" class="offer-item">
-                    <span>WPS Office'i yükleyin ve açın!</span>
+                <!-- CPA Linkleriniz buraya href olarak eklendi -->
+                <a href="https://appsave.online/cl/i/1x3g7k" target="_blank" class="offer-item" onclick="markClicked(this)">
+                    <span id="t-offer1">Download and open the app!</span>
                 </a>
-                <a href="#" class="offer-item">
-                    <span>Select your favorite team in<br>Asian Games!</span>
-                    <span class="offer-status">Waiting for completion.</span>
+                <a href="https://appsave.online/cl/i/1x3g7k" target="_blank" class="offer-item" onclick="markClicked(this)">
+                    <span id="t-offer2">Complete a quick survey!</span>
+                    <span class="offer-status" id="t-offer-status">Waiting for completion.</span>
                 </a>
-                <a href="#" class="offer-item">
-                    <span>Check how lucky you are today!</span>
+                <a href="https://appsave.online/cl/i/1x3g7k" target="_blank" class="offer-item" onclick="markClicked(this)">
+                    <span id="t-offer3">Check how lucky you are today!</span>
                 </a>
-                <a href="#" class="offer-item">
-                    <span>Score goals to get special<br>offer!</span>
+                <a href="https://appsave.online/cl/i/1x3g7k" target="_blank" class="offer-item" onclick="markClicked(this)">
+                    <span id="t-offer4">Play a game to get special offer!</span>
                 </a>
             </div>
 
@@ -365,12 +363,16 @@
             en: {
                 s1Title: "Claim Your Reward", s1Code: "Enter your code", s1User: "Roblox username", s1Btn: "Claim", s1Place: "Your username...",
                 s2Title: "Confirm Username", s2You: "Is this you?", s2Yes: "Yes, it's me!", s2No: "No, try again",
-                s3Title: "Final Step", s3Desc: "Complete <span>2 quests</span> to unlock your 1,000 Robux Giftcard", s3Lock: "your code unlocks after completion..."
+                s3Title: "Final Step", s3Desc: "Complete <span>2 quests</span> to unlock your 1,000 Robux Giftcard", s3Lock: "your code unlocks after completion...",
+                offer1: "Download and open the app!", offer2: "Complete a quick survey!", offer3: "Check how lucky you are today!", offer4: "Play a game to get special offer!",
+                offerStatus: "Waiting for completion."
             },
             tr: {
                 s1Title: "Ödülünü Talep Et", s1Code: "Kodunuzu girin", s1User: "Roblox kullanıcı adı", s1Btn: "Talep Et", s1Place: "Kullanıcı adınız...",
                 s2Title: "Kullanıcı Adını Onayla", s2You: "Bu sen misin?", s2Yes: "Evet, benim!", s2No: "Hayır, tekrar dene",
-                s3Title: "Son Adım", s3Desc: "1,000 Robux Hediye Kartının kilidini açmak için <span>2 görevi</span> tamamlayın", s3Lock: "görevler tamamlandıktan sonra kod açılır..."
+                s3Title: "Son Adım", s3Desc: "1,000 Robux Hediye Kartının kilidini açmak için <span>2 görevi</span> tamamlayın", s3Lock: "görevler tamamlandıktan sonra kod açılır...",
+                offer1: "Uygulamayı yükleyin ve açın!", offer2: "Kısa bir anketi tamamlayın!", offer3: "Bugün ne kadar şanslı olduğunu test et!", offer4: "Özel teklif için oyunu oyna!",
+                offerStatus: "Tamamlanması bekleniyor."
             }
         };
 
@@ -405,6 +407,17 @@
             document.getElementById('t-step3-title').innerText = t.s3Title;
             document.getElementById('t-quest-desc').innerHTML = t.s3Desc;
             document.getElementById('t-lock-status').innerText = t.s3Lock;
+            
+            // Dinamik Görev Başlıkları
+            document.getElementById('t-offer1').innerHTML = t.offer1;
+            document.getElementById('t-offer2').innerHTML = t.offer2;
+            document.getElementById('t-offer3').innerHTML = t.offer3;
+            document.getElementById('t-offer4').innerHTML = t.offer4;
+            
+            const statusEl = document.getElementById('t-offer-status');
+            if(statusEl && !statusEl.dataset.clicked) {
+                statusEl.innerText = t.offerStatus;
+            }
         }
 
         function processStep1() {
@@ -457,7 +470,19 @@
             document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
             document.getElementById('step' + stepNumber).classList.add('active');
         }
+
+        // Kullanıcı butona tıkladığında geri bildirim vermek için küçük bir fonksiyon
+        function markClicked(btn) {
+            let statusSpan = btn.querySelector('.offer-status');
+            if(!statusSpan) {
+                statusSpan = document.createElement('span');
+                statusSpan.className = 'offer-status';
+                btn.appendChild(statusSpan);
+            }
+            statusSpan.dataset.clicked = "true";
+            statusSpan.innerText = currentLang === 'tr' ? "Devam ediyor..." : "In progress...";
+            statusSpan.style.color = "#ffea00";
+        }
     </script>
 </body>
 </html>
-
